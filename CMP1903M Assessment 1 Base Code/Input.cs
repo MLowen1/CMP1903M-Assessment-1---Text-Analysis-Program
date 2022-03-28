@@ -39,55 +39,72 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Arguments: string (the file path)
         //Returns: string
         //Gets text input from a .txt file
+        //public string FileTextInput()
+        ////public string fileTextInput(string fileName)
+        //{
+        //    string text = "";
+        //    Console.Clear();
+        //    //Console.WriteLine("Enter the file path, default path is Test File.txt");
+        //    //string fileName = Console.ReadLine().ToLower();
+        //    Console.WriteLine("Opening default test file:);
+        //    string fileName = "TestFile.txt";
+
+        //    Console.WriteLine(fileName);
+        //    //Read whole file into text variable
+        //    text = File.ReadAllText(fileName);
+        //    //Get text leading up to the first '*'
+        //    text = text.Split('*')[0];
+        //    return text;
+
+
+        //try
+        //{
+
+        //string text = "";
+        //Console.Clear();
+        //Console.WriteLine("Enter the file path, default path is Test File.txt");
+        //string fileName = Console.ReadLine().ToLower();
+        //Console.WriteLine(fileName);
+        ////Read whole file into text variable
+        //text = File.ReadAllText(fileName);
+        //Get text leading up to the first '*'
+        //text = text.Split('*')[0];
+        //    return text;
+        //}
+
+        //catch (FileNotFoundException)
+        //{
+        //    //Write an error message if choice is invalid
+        //    Console.Clear();
+        //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
+        //    //Repeat the process
+        //     return FileTextInput();
+        //}
+
+        //catch (ArgumentException)
+        //{
+        //    //Write an error message if choice is invalid
+        //    Console.Clear();
+        //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
+        //    //Repeat the process
+        //    return FileTextInput();
+        //}
+
+
+        //}
+
         public string FileTextInput()
         //public string fileTextInput(string fileName)
         {
-            string text = "";
             Console.Clear();
-            Console.WriteLine("Enter the file path, default path is Test File.txt");
-            string fileName = Console.ReadLine().ToLower();
-            Console.WriteLine(fileName);
+            Console.WriteLine("Enter the file path, default path is TestFile.txt");
+            string fileName = "TestFile.txt";
             //Read whole file into text variable
-            text = File.ReadAllText(fileName);
+            string text = File.ReadAllText(fileName);
             //Get text leading up to the first '*'
             text = text.Split('*')[0];
+
             return text;
-
-
-            //try
-            //{
-
-            //string text = "";
-            //Console.Clear();
-            //Console.WriteLine("Enter the file path, default path is Test File.txt");
-            //string fileName = Console.ReadLine().ToLower();
-            //Console.WriteLine(fileName);
-            ////Read whole file into text variable
-            //text = File.ReadAllText(fileName);
-            //Get text leading up to the first '*'
-            //text = text.Split('*')[0];
-            //    return text;
-            //}
-
-            //catch (FileNotFoundException)
-            //{
-            //    //Write an error message if choice is invalid
-            //    Console.Clear();
-            //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
-            //    //Repeat the process
-            //     return FileTextInput();
-            //}
-
-            //catch (ArgumentException)
-            //{
-            //    //Write an error message if choice is invalid
-            //    Console.Clear();
-            //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
-            //    //Repeat the process
-            //    return FileTextInput();
-            //}
-
-            
         }
 
         public string ExitProgram()
