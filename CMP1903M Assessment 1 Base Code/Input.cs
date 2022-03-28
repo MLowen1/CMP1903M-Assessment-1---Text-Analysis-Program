@@ -39,83 +39,40 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Arguments: string (the file path)
         //Returns: string
         //Gets text input from a .txt file
-        //public string FileTextInput()
-        ////public string fileTextInput(string fileName)
-        //{
-        //    string text = "";
-        //    Console.Clear();
-        //    //Console.WriteLine("Enter the file path, default path is Test File.txt");
-        //    //string fileName = Console.ReadLine().ToLower();
-        //    Console.WriteLine("Opening default test file:);
-        //    string fileName = "TestFile.txt";
-
-        //    Console.WriteLine(fileName);
-        //    //Read whole file into text variable
-        //    text = File.ReadAllText(fileName);
-        //    //Get text leading up to the first '*'
-        //    text = text.Split('*')[0];
-        //    return text;
-
-
-        //try
-        //{
-
-        //string text = "";
-        //Console.Clear();
-        //Console.WriteLine("Enter the file path, default path is Test File.txt");
-        //string fileName = Console.ReadLine().ToLower();
-        //Console.WriteLine(fileName);
-        ////Read whole file into text variable
-        //text = File.ReadAllText(fileName);
-        //Get text leading up to the first '*'
-        //text = text.Split('*')[0];
-        //    return text;
-        //}
-
-        //catch (FileNotFoundException)
-        //{
-        //    //Write an error message if choice is invalid
-        //    Console.Clear();
-        //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
-        //    //Repeat the process
-        //     return FileTextInput();
-        //}
-
-        //catch (ArgumentException)
-        //{
-        //    //Write an error message if choice is invalid
-        //    Console.Clear();
-        //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
-        //    //Repeat the process
-        //    return FileTextInput();
-        //}
-
-
-        //}
-
-        public string FileTextInput()
-        //public string fileTextInput(string fileName)
+        public string FileTextInput()  
         {
-            Console.Clear();
-            Console.WriteLine("Enter the file path, default path is TestFile.txt");
-            string fileName = "TestFile.txt";
+            
+            Console.WriteLine("Enter the file path, default path is \"Test File.txt\".");
+            //string fileName = "TestFile.txt";
+            string fileName = Console.ReadLine() ?? string.Empty;
             //Read whole file into text variable
-            string text = File.ReadAllText(fileName);
-            //Get text leading up to the first '*'
-            text = text.Split('*')[0];
+            string text;
 
+            try
+            {
+                text = File.ReadAllText(fileName).ReplaceLineEndings(" ");
+
+                //Get text leading up to the first '*'
+                text = text.Split('*')[0].Trim(' ', '*', ',', '.'); // Trims text input to prevent errors in analysis.;
+            }
+
+            catch
+            { // Handles exceptions where filePath is an invalid file path.
+                Console.Clear();
+                Console.WriteLine("You have submitted an invalid file path.\n" +
+                                  "Please submit a valid file path.\n");
+                text = FileTextInput();
+            }
             return text;
         }
 
+        //Mthod created to handle ending and quitting the program.  This was created in addition to methods provided with the base code.
         public string ExitProgram()
         {
 
             Console.WriteLine("\n End");
             Environment.Exit(0);
 
-
-            //UserInput userInput = new UserInput();
-            //string inputOption = userInput.getUserInputChoice();
             return null;
         }
     }

@@ -85,11 +85,13 @@ namespace CMP1903M_Assessment_1_Base_Code
                     //"Case 1" - Yes:
                     case "1":
                         //If "Case 1" is selected then break.
+                        Console.Clear();
                         break;
 
                     //"Case 2" - No:
                     case "2":
                         //If "Case 2" is selected the return to the beginning of the program.
+                        Console.Clear();
                         goto Start;
                 }
 
