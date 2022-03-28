@@ -11,202 +11,194 @@ namespace CMP1903M_Assessment_1_Base_Code
     {
         static void Main()
         {
+            //text variable:
             string text = "";
+
             while (true)
             {
-                //Instantiate objects required:
+                //Instantiate classs required:
 
-                //Create "UserInput" object - "UserInput" is a custom class in addition to the classes provided the base code:
+                //Create "UserInput" class - "UserInput" is a custom class in addition to the classes provided the base code:
                 //Collects the users input.
                 UserInput userInput = new UserInput();
 
-                //Create "Input" object:
+                //Create "Input" class:
                 //Handles the text input methods and quitting the program.
                 Input input = new Input();
 
-                //Create an "Analyse" object:
+                //Create an "Analyse" class:
                 //Calcualtes and returns the analysis of text.
                 Analyse analyse = new Analyse();
 
-                //Create a "Report" object:
+                //Create a "Report" class:
                 //Handles reporting of the analysis.
                 Report report = new Report();
 
 
-
-            //Start label for beginning the loop.
+            //"Start" label allows the "goto" statement to be used to transfer control to this point in the program.
+            //The loop is reset to this point if the user choses to run the program again.
             Start:
 
-                //Vairables
-
+                //Variables
                 text = "";
-                //if (text != null)
-                //text = null; }
 
                 //Clears the console at the start of the loop.
                 Console.Clear();
 
-                //The "inputOption" variable is created and contains information about the user choice which is passed from "getUserInputChoice" in the "User Input" class.
+                //The "inputOption" variable is created and contains information about the user choice which is passed from "InputChoice()" in the "User Input" class.
                 string inputOption = userInput.InputChoice();
 
                 //Clears the console after the initial user input.
                 Console.Clear();
 
+                //This switch case determines which input option the user has selected and displays a feedback message based on their choice.
+                //"Please select an option number:"
                 switch (inputOption)
                 {
+
+                    //"Case 1" - Manual text entry via keyboard:
                     case "1":
-                        Console.WriteLine("Manual text entry via keyboard selected...");
+                        Console.WriteLine("Manual text entry via keyboard selected..." +
+                                          "\n");
                         break;
+                    //"Case 2" - Read text from a file:
                     case "2":
-                        Console.WriteLine("Read text from a selected file selected...");
+                        Console.WriteLine("Read text from a file selected..." +
+                                          "\n");
                         break;
+                    //"Case 2" - End the program:
                     case "3":
-                        Console.WriteLine("Quit program selected...");
+                        Console.WriteLine("Quit program selected..." +
+                                          "\n");
                         break;
                 }
 
+                //The "choiceConfirmation" variable is created and contains information about the user choice which is passed from "ChoiceConfirmation()" in the "User Input" class.
+                //This second variable is created to allow a second switch case to be used.
                 string choiceConfirmation = userInput.ChoiceConfirmation();
 
+                //This switch case determines which input option the user has selected and then prompts the user to confirm whether the the option have selected is correct. If the selected option is correct then the program will continue. If the selected option is incrorect then the program will loop back to the "Start" label in order to allow the user to pick a new input option. The user is also given the option to quit the program.
+                //"Have you selected the correct option?"
                 switch (choiceConfirmation)
                 {
+
+                    //"Case 1" - Yes:
                     case "1":
-                        break;
-                    case "2":
-                        goto Start;
-                    case "3":
-                        //handles the user asking to quit
+                        //If "Case 1" is selected then break.
                         Console.Clear();
-                        string exitConfirmation = userInput.QuitConfirmation();
+                        break;
 
-                        switch (exitConfirmation)
-                        {
-
-                            case "1":
-                                Console.Write("yes");
-
-                                break;
-
-                            case "2":
-                                Console.Write("No");
-                                break;
-                        }
-
-                        text = input.ExitProgram();
-                        Environment.Exit(0);
-                        goto End;
+                    //"Case 2" - No:
+                    case "2":
+                        //If "Case 2" is selected the return to the beginning of the program.
+                        Console.Clear();
+                        goto Start;
                 }
 
-                //The input method, based on the users choice in "User Input", is selceted using a switch statement.
+                //This switch case calls the selected input method from the "Input" class, based on the users choice in "InputChoice".
+                //"Please select an option number:
                 switch (inputOption)
                 {
-                    //Case 1 - Manual text input via keyboard:
-                    //Calls the "manualTextInput" function from the "Input" class.
+
+                    //"Case 1" - Manual text entry via keyboard:
+                    //Calls the "ManualTextInput" method from the "Input" class.
                     case "1":
 
+                        //The "text" variable is passed the information fromm the input in "ManualTextInput".
                         text = input.ManualTextInput();
+                        //Clears the console and displays a feedback message based on the text input.
                         Console.Clear();
-                        Console.WriteLine("manual" +
+                        Console.WriteLine("Manual text entered:" +
                                           "\n----------\n" +
                                            text +
                                           "\n----------\n");
                         break;
 
-                    //Case 2 - Text loaded from file:
-                    //Calls the "fileTextInput" function from the "Input" class.
+                    //"Case 2" - Read text from a file:
+                    //Calls the "FileTextInput" method from the "Input" class.
                     case "2":
+
                         text = input.FileTextInput();
+                        //Clears the console and displays a feedback message based on the text input.
                         Console.Clear();
-                        Console.WriteLine("Input read from file:" +
+                        Console.WriteLine("Input text read from file:" +
                                           "\n----------\n" +
                                            text +
                                           "\n----------\n");
                         break;
 
-                    //Case 3 - Quit program:
-                    //Calls the "exitProgram" function from the "Input" class.
+                    //"Case 3" - End the program:
+                    //Calls the "ExitProgram" method from the "Input" class.
                     case "3":
-                        //handles the user asking to quit
+
                         Console.Clear();
                         text = input.ExitProgram();
 
                         break;
                 }
 
-                //Pass the text input to the 'AnalyseText' method
-                //Receive a list of integers back
+                //Pass the text input to the 'AnalyseText' method.
+                //Receive a list of integers back.
                 List<int> parameters = analyse.AnalyseText(text);
 
-                //Report the results of the analysis
-
+                //Report the results of the analysis.
                 report.ReportParameters(parameters);
 
-                //Get and show the frequency of individual letters
+                //Get and show the frequency of individual letters using the "Dictionary" method.
                 Console.WriteLine("The frequency of individual letters:");
                 Dictionary<char, int> letterCounts = analyse.CountLetters(text);
                 report.OutputDictionary(letterCounts);
 
-                //Console.WriteLine("");
-                //Console.WriteLine("Do you want to generate a report of long words (LongWords.txt)? (y/N)");
+                //The "longWordsOption" variable is created and contains information about the user choice which is passed from "LongWordsReport()" in the "User Input" class.
                 string longWordsOption = userInput.LongWordReport();
 
-                //Select input method based on user choice
+                //This switch case calls the selected option from the "UserInput" class, based on the users choice in "InputChoice".
+                //"Do you want to generate a report of long words?"
                 switch (longWordsOption)
                 {
+
+                    //"Case 1" - Yes:
+                    //"Case 1" - Write report of long words to LongWords.txt
                     case "1":
-                        //Write report of long words to LongWords.txt
+                       
                         List<string> longWords = analyse.ExtractLongWords(text);
                         report.WriteListToFile(longWords, "LongWords.txt");
-                        Console.WriteLine("Long words have been written to: LongWords.txt");
-                        string runAgainChoice1 = userInput.RunProgramAgain();
 
-                        switch (runAgainChoice1)
-                        {
-                            case "1":
-                                goto Start;
-                                break;
-                            case "2":
+                        Console.Clear();
+                        Console.WriteLine("Long words have been written to: LongWords.txt" +
+                                          "\n");
 
-                                Environment.Exit(0);
-                                goto End;
-                                break;
-
-                        }
                         break;
 
+                    //"Case 2" - No:
+                    //Ask the user if they would like to run the program again:
                     case "2":
-
-                        string runAgainChoice = userInput.RunProgramAgain();
-
-                        switch (runAgainChoice)
-                        {
-                            case "1":
-                                text = "-";
-                                goto Start;
-                                break;
-                            case "2":
-
-                                Environment.Exit(0);
-                                goto End;
-                                text = "-";
-                                break;
-
-                        }
-
-                        //This needs chaging from quit program to run the program again
-                        //Create a method in user input to ask the user if they want too run the program again
-                        //Creat a method in Input to make the program run again from the beginning
-
-                        Console.WriteLine("placeholder test"); // This is where you need to give the user the option to run the program again or quit the program.
-
-
-                        string exitConfirmation = userInput.QuitConfirmation();
-                        Console.WriteLine(exitConfirmation);
-
-
-                        // runAgain.UserInput// Call the program run again function
                         break;
+
                 }
 
+                //The "runAgainChoice" variable is assigned and passed the information inputted in the "RunProgramAgain()" method in the "User Input" class.
+                string runAgainChoice = userInput.RunProgramAgain();
+
+                switch (runAgainChoice)
+                {
+
+                    //"Case 1" - Yes:
+                    //"goto" statement jumps to the "End" label at the end of the program.
+                    case "1":
+
+                        goto Start;
+
+                    //"Case 2" - No:
+                    //Calls the "ExitProgram" method from the "Input" class.
+                    //"goto" statement jumps to the "End" label at the end of the program.
+                    case "2":
+
+                        Environment.Exit(0);
+                        goto End;
+                }
+
+            //"End" label allows the "goto" statement to be used to transfer control to this point in the program.
             End:;
             }
         }
