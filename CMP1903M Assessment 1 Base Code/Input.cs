@@ -17,11 +17,13 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Gets text input from the keyboard
         public string ManualTextInput()
         {
+            string text = "";
             //Prompt the user to enter text
             Console.Clear();
-            Console.WriteLine("Please enter text below via keyboard." +
-                              "\nPress Enter to finish a line." +
-                              "\nEnd the text input using ***: ");
+            Console.WriteLine("Please enter text below via keyboard:" +
+                              "\n" +
+                              "\nPress ENTER to finish a line and use *** to end the text input: " +
+                              "\n");
 
             //Read user input, until they terminate with an '*'
             while (!text.EndsWith("***"))
@@ -40,15 +42,52 @@ namespace CMP1903M_Assessment_1_Base_Code
         public string FileTextInput()
         //public string fileTextInput(string fileName)
         {
+            string text = "";
             Console.Clear();
-            Console.WriteLine("Enter the file path, default path is TestFile.txt");
-            string fileName = "TestFile.txt";
+            Console.WriteLine("Enter the file path, default path is Test File.txt");
+            string fileName = Console.ReadLine().ToLower();
+            Console.WriteLine(fileName);
             //Read whole file into text variable
-            string text = File.ReadAllText(fileName);
+            text = File.ReadAllText(fileName);
             //Get text leading up to the first '*'
             text = text.Split('*')[0];
-
             return text;
+
+
+            //try
+            //{
+
+            //string text = "";
+            //Console.Clear();
+            //Console.WriteLine("Enter the file path, default path is Test File.txt");
+            //string fileName = Console.ReadLine().ToLower();
+            //Console.WriteLine(fileName);
+            ////Read whole file into text variable
+            //text = File.ReadAllText(fileName);
+            //Get text leading up to the first '*'
+            //text = text.Split('*')[0];
+            //    return text;
+            //}
+
+            //catch (FileNotFoundException)
+            //{
+            //    //Write an error message if choice is invalid
+            //    Console.Clear();
+            //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
+            //    //Repeat the process
+            //     return FileTextInput();
+            //}
+
+            //catch (ArgumentException)
+            //{
+            //    //Write an error message if choice is invalid
+            //    Console.Clear();
+            //    Console.WriteLine("'{0}' is not a valid filepath. Please try again.");
+            //    //Repeat the process
+            //    return FileTextInput();
+            //}
+
+            
         }
 
         public string ExitProgram()

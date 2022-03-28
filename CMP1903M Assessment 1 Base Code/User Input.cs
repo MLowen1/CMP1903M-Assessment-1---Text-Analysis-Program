@@ -15,9 +15,11 @@ namespace CMP1903M_Assessment_1_Base_Code
         {
             //Prompts user to pick a choice
             Console.WriteLine("Please select an option number:" +
+                              "\n" +
                               "\n1: Manual text entry via keyboard " +
                               "\n2: Read text from a selected file " +
-                              "\n3: Quit program");
+                              "\n3: Quit program" +
+                              "\n");
 
             string inputChoice = Console.ReadLine().ToLower();
 
@@ -45,15 +47,16 @@ namespace CMP1903M_Assessment_1_Base_Code
         public string ChoiceConfirmation()
         {
             Console.WriteLine("Have you selected the correct option?" +
-                "\n1: Yes" +
-                "\n2: No" +
-                "\n3: Quit Program");
+                              "\n" +
+                              "\n1: Yes" +
+                              "\n2: No" +
+                              "\n");
 
             string confirmationChoice = Console.ReadLine().ToLower();
 
             try
             {
-                if (confirmationChoice != "1" && confirmationChoice != "2" && confirmationChoice != "3")
+                if (confirmationChoice != "1" && confirmationChoice != "2")
                 {
                     throw new InvalidChoiceException(confirmationChoice);
                 }
@@ -77,7 +80,8 @@ namespace CMP1903M_Assessment_1_Base_Code
             Console.WriteLine("Quit program selected..." +
                               "\nAre you sure you would like to quit?" +
                               "\n1: Yes" +
-                              "\n2: No");
+                              "\n2: No" +
+                              "\n");
             string quitChoice = Console.ReadLine();
 
             try
@@ -105,7 +109,8 @@ namespace CMP1903M_Assessment_1_Base_Code
             //Console.WriteLine("Do you want to generate a report of long words (LongWords.txt)? (y/N)");
             Console.WriteLine("\nDo you want to generate a report of long words (LongWords.txt)?, Select an option below:" +
                               "\n1: Yes" +
-                              "\n2: No");
+                              "\n2: No" +
+                              "\n");
 
             string longWordsChoice = Console.ReadLine().ToLower();
 
@@ -134,7 +139,8 @@ namespace CMP1903M_Assessment_1_Base_Code
         {
             Console.WriteLine("Do you want to run the program again?" +
                               "\n1: Yes " +
-                              "\n2: No ");
+                              "\n2: No " +
+                              "\n");
 
             string runAgainChoice = Console.ReadLine();
 
