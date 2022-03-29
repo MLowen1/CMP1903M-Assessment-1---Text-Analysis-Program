@@ -9,7 +9,7 @@ namespace CMP1903M_Assessment_1_Base_Code
     public class Input
     {
         //Handles the text input for Assessment 1
-        string text = "";
+        //string text = ""; - Removed 29/03/22 following feedback from (25679003) as the variable is not used due to being declared at the start of the relevant.
 
         //Method: manualTextInput
         //Arguments: none
