@@ -156,7 +156,9 @@ namespace CMP1903M_Assessment_1_Base_Code
         // This method encapsulates error handling for the user input through the custom "Invalid User Input Exception" class.
         public string RunProgramAgain()
         {
-            Console.Clear();
+            Console.Clear(); // Based on feedback from (25679003) the message given to the user when error handling this function is not visible due to the console clearing at the start of calling the function. If this is removed then the console does not clear following the previous function so at this point the suggested change had not been implemented.
+
+            //The "Console.Clear()" was added to de clutter the console window following feedback from (07076286).
             Console.WriteLine("Do you want to run the program again?" +
                               "\n1: Yes " +
                               "\n2: No " +

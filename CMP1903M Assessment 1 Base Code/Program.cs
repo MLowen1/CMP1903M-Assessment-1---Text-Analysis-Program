@@ -108,7 +108,7 @@ namespace CMP1903M_Assessment_1_Base_Code
                         text = input.ManualTextInput();
                         //Clears the console and displays a feedback message based on the text input.
                         Console.Clear();
-                        Console.WriteLine("Manual text entered:" +
+                        Console.WriteLine("Manual text entered:\n" +
                                           "\n----------\n" +
                                            text +
                                           "\n----------\n");
@@ -121,7 +121,7 @@ namespace CMP1903M_Assessment_1_Base_Code
                         text = input.FileTextInput();
                         //Clears the console and displays a feedback message based on the text input.
                         Console.Clear();
-                        Console.WriteLine("Input text read from file:" +
+                        Console.WriteLine("Input text read from file:\n" +
                                           "\n----------\n" +
                                            text +
                                           "\n----------\n");
@@ -145,7 +145,7 @@ namespace CMP1903M_Assessment_1_Base_Code
                 report.ReportParameters(parameters);
 
                 //Get and show the frequency of individual letters using the "Dictionary" method.
-                Console.WriteLine("The frequency of individual letters:");
+                Console.WriteLine("\nThe frequency of individual letters: \n");
                 Dictionary<char, int> letterCounts = analyse.CountLetters(text);
                 report.OutputDictionary(letterCounts);
 
@@ -193,6 +193,9 @@ namespace CMP1903M_Assessment_1_Base_Code
                     //Calls the "ExitProgram" method from the "Input" class.
                     //"goto" statement jumps to the "End" label at the end of the program.
                     case "2":
+
+
+                        Console.WriteLine("\n End");
 
                         Environment.Exit(0);
                         goto End;
